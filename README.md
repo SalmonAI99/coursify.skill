@@ -1,26 +1,46 @@
 # Coursify Skills
 
-Installable, user-facing agent skills for planning, creating, and managing courses in Coursify. Each skill is a directory containing a `SKILL.md` with Agent Skills-compatible YAML frontmatter (`name` and `description`) followed by workflow instructions.
+Installable, user-facing agent skills for planning, creating, and managing courses in Coursify. Each skill lives under [`skills/`](skills/) in its own directory containing a `SKILL.md` with Agent Skills-compatible YAML frontmatter (`name` and `description`) followed by workflow instructions.
+
+## Install in an AI agent
+
+Install these skills with the community [`skills` CLI](https://skills.sh/), which supports mainstream coding agents including Claude Code, Codex, Cursor, and others. From a project directory, run:
+
+```bash
+# Browse the available Coursify skills and choose which agent(s) to configure
+npx skills add SalmonAI99/coursify.skill
+
+# Or install all skills into one agent
+npx skills add SalmonAI99/coursify.skill --skill '*' --agent claude-code
+
+# Install just one skill into Codex
+npx skills add SalmonAI99/coursify.skill --skill course-planning --agent codex
+
+# Install all skills globally for all supported agents
+npx skills add SalmonAI99/coursify.skill --skill '*' --agent '*' --global
+```
+
+Omit `--agent` to choose agents interactively. Use `--list` to inspect skills before installing, or `npx skills update` to update installed skills. The CLI installs into the current project by default; `--global` installs for your user account. See the [skills CLI documentation](https://github.com/vercel-labs/skills) for supported agents and options.
 
 ## Course planning and authoring
 
-- [`course-planning`](course-planning/SKILL.md) — clarify goals, audience, scope, constraints, and format; obtain confirmation of the brief before outlining.
-- [`hierarchy-design`](hierarchy-design/SKILL.md) — design or revise a course outline with live outline tools and verify changes.
-- [`outline-addition`](outline-addition/SKILL.md) — add modules and nested topics to the active course.
-- [`outline-ordering`](outline-ordering/SKILL.md) — reorder sibling items without changing the hierarchy.
-- [`outline-deletion`](outline-deletion/SKILL.md) — remove an explicitly selected outline subtree with scope checks.
-- [`educational-writing`](educational-writing/SKILL.md) — write one approved module as structured, typed lesson content.
-- [`mathematical-explanation`](mathematical-explanation/SKILL.md) — produce rigorous mathematical explanations in the supported lesson schema.
-- [`diagram-generation`](diagram-generation/SKILL.md) — create a schema-valid diagram only when it materially helps explain content.
-- [`exercise-generation`](exercise-generation/SKILL.md) — create objective-aligned practice and review criteria.
-- [`presentation-design`](presentation-design/SKILL.md) — create a structured presentation from course content using approved presentation tools.
+- [`course-planning`](skills/course-planning/SKILL.md) — clarify goals, audience, scope, constraints, and format; obtain confirmation of the brief before outlining.
+- [`hierarchy-design`](skills/hierarchy-design/SKILL.md) — design or revise a course outline with live outline tools and verify changes.
+- [`outline-addition`](skills/outline-addition/SKILL.md) — add modules and nested topics to the active course.
+- [`outline-ordering`](skills/outline-ordering/SKILL.md) — reorder sibling items without changing the hierarchy.
+- [`outline-deletion`](skills/outline-deletion/SKILL.md) — remove an explicitly selected outline subtree with scope checks.
+- [`educational-writing`](skills/educational-writing/SKILL.md) — write one approved module as structured, typed lesson content.
+- [`mathematical-explanation`](skills/mathematical-explanation/SKILL.md) — produce rigorous mathematical explanations in the supported lesson schema.
+- [`diagram-generation`](skills/diagram-generation/SKILL.md) — create a schema-valid diagram only when it materially helps explain content.
+- [`exercise-generation`](skills/exercise-generation/SKILL.md) — create objective-aligned practice and review criteria.
+- [`presentation-design`](skills/presentation-design/SKILL.md) — create a structured presentation from course content using approved presentation tools.
 
 ## Website and integration skills
 
-- [`coursify-web-workspace`](coursify-web-workspace/SKILL.md) — navigate and manage courses through the Coursify website UI.
-- [`coursify-web-course-editor`](coursify-web-course-editor/SKILL.md) — edit outlines, lesson blocks, and presentations through the website while protecting user work.
-- [`coursify-web-course-settings`](coursify-web-course-settings/SKILL.md) — update course title/description/difficulty or safely delete a course.
-- [`coursify-mcp-access`](coursify-mcp-access/SKILL.md) — set up and safely use Coursify's read-only MCP connection.
+- [`coursify-web-workspace`](skills/coursify-web-workspace/SKILL.md) — navigate and manage courses through the Coursify website UI.
+- [`coursify-web-course-editor`](skills/coursify-web-course-editor/SKILL.md) — edit outlines, lesson blocks, and presentations through the website while protecting user work.
+- [`coursify-web-course-settings`](skills/coursify-web-course-settings/SKILL.md) — update course title/description/difficulty or safely delete a course.
+- [`coursify-mcp-access`](skills/coursify-mcp-access/SKILL.md) — set up and safely use Coursify's read-only MCP connection.
 
 ## Important capability boundary
 
